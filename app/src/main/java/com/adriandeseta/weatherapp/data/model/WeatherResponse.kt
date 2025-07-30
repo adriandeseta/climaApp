@@ -1,7 +1,7 @@
 package com.adriandeseta.weatherapp.data.model
 
 data class WeatherResponse(
-    val name: String, // nombre de la ciudad
+    val name: String,
     val main: Main,
     val weather: List<Weather>,
     val wind: Wind

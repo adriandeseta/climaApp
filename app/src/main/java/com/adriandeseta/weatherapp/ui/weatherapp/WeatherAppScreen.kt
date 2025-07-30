@@ -1,18 +1,31 @@
 package com.adriandeseta.weatherapp.ui.weatherapp
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.adriandeseta.weatherapp.R
 import com.adriandeseta.weatherapp.data.model.WeatherResponse
+
 
 @Composable
 fun WeatherAppScreen(viewModel: WeatherAppViewModel) {
@@ -43,7 +56,59 @@ fun WeatherAppScreen(viewModel: WeatherAppViewModel) {
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    OutlinedTextField(
+                        value = city,
+                        onValueChange = { city = it },
+                        placeholder = { Text("Search") },
+                        singleLine = true,
+                        shape = RoundedCornerShape(50),
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(56.dp)
+                            .padding(end = 8.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedContainerColor = Color.White.copy(
+                                alpha = 0.5f
+                            ),
+                            unfocusedContainerColor = Color.White.copy(
+                                alpha = 0.5f
+                            ),
+                            focusedBorderColor = Color.Transparent,
+                            unfocusedBorderColor = Color.Transparent,
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White,
+                            cursorColor = Color.White,
+                            focusedPlaceholderColor = Color.White,
+                            unfocusedPlaceholderColor = Color.White
+                        ),
+                        keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+                        keyboardActions = KeyboardActions(
+                            onDone = { viewModel.fetchWeather(city) }
+                        )
+                    )
 
+                    IconButton(
+                        onClick = { viewModel.fetchWeather(city) },
+                        modifier = Modifier
+                            .size(56.dp)
+                            .background(
+                                color = Color.White.copy(alpha = 0.5f),
+                                shape = CircleShape
+                            )
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = "Buscar",
+                            tint = Color.White
+                        )
+                    }
+                }
                 when (state) {
                     is WeatherUiState.Loading -> {
                         CircularProgressIndicator()
@@ -82,29 +147,7 @@ fun WeatherAppScreen(viewModel: WeatherAppViewModel) {
 
                 }
 
-                OutlinedTextField(
-                    value = city,
-                    onValueChange = { city = it },
-                    label = { Text("Ciudad") },
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
-                    keyboardActions = KeyboardActions(
-                        onDone = { viewModel.fetchWeather(city) }
-                    ),
-                    modifier = Modifier.fillMaxWidth()
-                )
-
                 Spacer(modifier = Modifier.height(16.dp))
-
-                Button(
-                    onClick = { viewModel.fetchWeather(city) },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text("Buscar clima")
-                }
-
-                Spacer(modifier = Modifier.height(24.dp))
-
 
             }
         }

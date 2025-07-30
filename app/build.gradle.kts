@@ -122,5 +122,6 @@ dependencies {
 
     implementation(libs.lottie.compose)
 
+    implementation(libs.androidx.material3) // o la última estable
 
 }

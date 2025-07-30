@@ -120,4 +120,8 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.coil.compose)
 
+    implementation(libs.lottie.compose)
+
+    implementation(libs.androidx.material3) // o la última estable
+
 }

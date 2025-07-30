@@ -55,6 +55,9 @@ class WeatherAppViewModel @Inject constructor(
 
     fun fetchCurrentLocationWeather(locationService: com.adriandeseta.weatherapp.location.LocationService) {
         viewModelScope.launch {
+            _uiState.value = WeatherUiState.Empty
+            kotlinx.coroutines.delay(3000L)
+
             try {
                 val location = locationService.getCurrentLocation()
                 if (location != null) {

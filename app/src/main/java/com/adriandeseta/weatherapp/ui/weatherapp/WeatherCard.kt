@@ -1,9 +1,11 @@
 package com.adriandeseta.weatherapp.ui.weatherapp
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.adriandeseta.weatherapp.data.model.WeatherResponse
@@ -14,9 +16,12 @@ fun WeatherCard(data: WeatherResponse) {
     val iconUrl = "https://openweathermap.org/img/wn/${weather?.icon}@2x.png"
 
     Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(4.dp)
-    ) {
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White.copy(alpha = 0.4f)
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+        ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "Ciudad: ${data.name}", style = MaterialTheme.typography.titleLarge)
             Spacer(modifier = Modifier.height(8.dp))

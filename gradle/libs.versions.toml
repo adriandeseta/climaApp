@@ -18,6 +18,7 @@ junit = "4.13.2"
 kotlin = "2.1.20"
 ksp = "2.1.20-2.0.0"
 loggingInterceptor = "5.1.0"
+lottieCompose = "6.6.7"
 playServicesLocation = "21.3.0"
 retrofit = "3.0.0"
 
@@ -52,6 +53,7 @@ hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", 
 junit = { module = "junit:junit", version.ref = "junit" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 

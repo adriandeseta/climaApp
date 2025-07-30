@@ -120,4 +120,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.coil.compose)
 
+    implementation(libs.lottie.compose)
+
+
 }

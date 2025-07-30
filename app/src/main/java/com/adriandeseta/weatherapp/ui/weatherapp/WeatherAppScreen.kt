@@ -55,17 +55,11 @@ fun WeatherAppScreen(viewModel: WeatherAppViewModel) {
 
         Box(modifier = Modifier.fillMaxSize()) {
 
-            val animationRes = when (state) {
-                is WeatherUiState.Success -> {
-                    val iconCode =
-                        (state as WeatherUiState.Success).data.weather.firstOrNull()?.icon ?: "01d"
-                    getLottieAnimationForWeather(iconCode)
-                }
-
-                else -> R.raw.cloud
+            if (state is WeatherUiState.Success) {
+                val iconCode = (state as WeatherUiState.Success).data.weather.firstOrNull()?.icon ?: "01d"
+                val animationRes = getLottieAnimationForWeather(iconCode)
+                LottieAnimationWeather(animationRes)
             }
-            LottieAnimationWeather(animationRes)
-
             // Contenido principal
             Column(
                 modifier = Modifier

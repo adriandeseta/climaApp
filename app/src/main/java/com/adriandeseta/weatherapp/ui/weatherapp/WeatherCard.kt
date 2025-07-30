@@ -57,6 +57,9 @@ fun WeatherCard(data: WeatherResponse) {
             fontSize = 25.sp,
             color = Color.White
         )
+
+        Spacer(modifier = Modifier.weight(1f))
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()

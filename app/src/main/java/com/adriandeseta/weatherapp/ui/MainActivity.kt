@@ -1,6 +1,7 @@
 package com.adriandeseta.weatherapp.ui
 
 import android.Manifest
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         super.onCreate(savedInstanceState)
 
         setContent {
@@ -29,9 +32,9 @@ class MainActivity : ComponentActivity() {
                 ActivityResultContracts.RequestPermission()
             ) { isGranted ->
                 if (isGranted) {
-                    viewModel.fetchCurrentLocationWeather(locationService)
+                    viewModel.fetchCurrentLocationWeather(locationService, true)
                 } else {
-                    viewModel.fetchWeatherByCity("Buenos Aires") // fallback
+                    viewModel.fetchWeatherByCity("Buenos Aires")
                 }
             }
 
@@ -40,7 +43,7 @@ class MainActivity : ComponentActivity() {
             }
 
             MaterialTheme {
-                WeatherAppScreen(viewModel = viewModel)
+                WeatherAppScreen(viewModel = viewModel, locationService)
             }
         }
     }

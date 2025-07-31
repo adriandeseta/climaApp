@@ -10,17 +10,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.adriandeseta.weatherapp.R
 import com.adriandeseta.weatherapp.data.model.WeatherResponse
+import com.adriandeseta.weatherapp.ui.CustomText
+import com.adriandeseta.weatherapp.ui.figtreeFontFamily
 import kotlin.math.roundToInt
 
 @Composable
@@ -40,9 +42,11 @@ fun WeatherCard(data: WeatherResponse) {
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
+            CustomText(
                 text = "${data.main.temp.roundToInt()} °C",
                 fontSize = 50.sp,
+                fontWeight = FontWeight.Normal,
+                fontFamily = figtreeFontFamily,
                 color = Color.White
             )
             AsyncImage(
@@ -52,9 +56,11 @@ fun WeatherCard(data: WeatherResponse) {
             )
         }
 
-        Text(
+        CustomText(
             text = data.name,
             fontSize = 25.sp,
+            fontWeight = FontWeight.Normal,
+            fontFamily = figtreeFontFamily,
             color = Color.White
         )
 
@@ -74,17 +80,23 @@ fun WeatherCard(data: WeatherResponse) {
                     tint = Color.White,
                     modifier = Modifier.size(30.dp)
                 )
+
                 Spacer(modifier = Modifier.width(8.dp))
+
                 Column {
-                    Text(
+                    CustomText(
                         text = "${data.main.humidity}%",
                         color = Color.White,
-                        fontSize = 30.sp
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = figtreeFontFamily,
                     )
-                    Text(
+                    CustomText(
                         text = "Humidity",
                         color = Color.White.copy(alpha = 0.7f),
-                        fontSize = 15.sp
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = figtreeFontFamily,
                     )
                 }
             }
@@ -96,17 +108,23 @@ fun WeatherCard(data: WeatherResponse) {
                     tint = Color.White,
                     modifier = Modifier.size(30.dp)
                 )
+
                 Spacer(modifier = Modifier.width(8.dp))
+
                 Column {
-                    Text(
+                    CustomText(
                         text = "${data.wind.speed} km/h",
                         color = Color.White,
-                        fontSize = 30.sp
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = figtreeFontFamily,
                     )
-                    Text(
+                    CustomText(
                         text = "Wind Speed",
                         color = Color.White.copy(alpha = 0.7f),
-                        fontSize = 15.sp
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = figtreeFontFamily,
                     )
                 }
             }

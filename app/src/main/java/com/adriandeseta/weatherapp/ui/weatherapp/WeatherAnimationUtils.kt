@@ -2,10 +2,12 @@ package com.adriandeseta.weatherapp.ui.weatherapp
 
 import androidx.annotation.RawRes
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.adriandeseta.weatherapp.R
 import com.airbnb.lottie.compose.LottieAnimation
@@ -61,5 +63,22 @@ fun LottieAnimationBackground(@RawRes animationRes: Int) {
             .fillMaxSize()
             .zIndex(-2f),
         contentScale = ContentScale.FillBounds
+    )
+}
+
+@Composable
+fun LottieAnimationError(@RawRes animationRes: Int) {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(animationRes))
+    val progress by animateLottieCompositionAsState(
+        composition = composition,
+        iterations = LottieConstants.IterateForever,
+        speed = 1f
+    )
+
+    LottieAnimation(
+        composition = composition,
+        progress = { progress },
+        modifier = Modifier
+            .zIndex(1f).size(300.dp),
     )
 }

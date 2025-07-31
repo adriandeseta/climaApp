@@ -1,19 +1,13 @@
-<!--
-  ~ Copyright (C) 2022 The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="weatherpp_welcome_title_head">¡Bienvenido!</string>
+    <string name="weatherpp_welcome_title_body">a WeatherApp</string>
+    <string name="weatherpp_welcome_sub_title_head">Ingresá una ciudad</string>
+    <string name="weatherpp_welcome_sub_title_body">para ver el clima</string>
+    <string name="weatherapp_error_message">¡Ups! No encontramos\nla ciudad que buscás</string>
+    <string name="weatherapp_error_message_cordenates">¡Ups! No encontramos\nlas c queoordenadas\nque buscás</string>
+    <string name="weatherapp_search_content_description">Buscar</string>
+    <string name="weatherapp_search_placeholder">Ingresa una ciudad</string>
+    <string name="weatherapp_button_back">Volver</string>
+
 </resources>

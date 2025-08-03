@@ -99,61 +99,64 @@ fun WeatherAppScreen(
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    OutlinedTextField(
-                        textStyle = TextStyle(
-                            fontFamily = figtreeFontFamily,
-                            fontSize = 18.sp
-                        ),
-                        value = city,
-                        onValueChange = { city = it },
-                        placeholder = { Text(stringResource(R.string.weatherapp_search_placeholder)) },
-                        singleLine = true,
-                        shape = RoundedCornerShape(50),
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(56.dp)
-                            .padding(end = 8.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedContainerColor = Color.White.copy(
-                                alpha = 0.4f
-                            ),
-                            unfocusedContainerColor = Color.White.copy(
-                                alpha = 0.4f
-                            ),
-                            focusedBorderColor = Color.Transparent,
-                            unfocusedBorderColor = Color.Transparent,
-                            focusedTextColor = Color.White,
-                            unfocusedTextColor = Color.White,
-                            cursorColor = Color.White,
-                            focusedPlaceholderColor = Color.White,
-                            unfocusedPlaceholderColor = Color.White
-                        ),
-                        keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
-                        keyboardActions = KeyboardActions(
-                            onDone = { viewModel.fetchWeather(city) }
-                        )
-                    )
+                if (state !is WeatherUiState.Empty) {
 
-                    IconButton(
-                        onClick = { viewModel.fetchWeather(city) },
+                    Row(
                         modifier = Modifier
-                            .size(56.dp)
-                            .background(
-                                color = Color.White.copy(alpha = 0.4f),
-                                shape = CircleShape
-                            )
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = stringResource(R.string.weatherapp_search_content_description),
-                            tint = Color.White
+                        OutlinedTextField(
+                            textStyle = TextStyle(
+                                fontFamily = figtreeFontFamily,
+                                fontSize = 18.sp
+                            ),
+                            value = city,
+                            onValueChange = { city = it },
+                            placeholder = { Text(stringResource(R.string.weatherapp_search_placeholder)) },
+                            singleLine = true,
+                            shape = RoundedCornerShape(50),
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(56.dp)
+                                .padding(end = 8.dp),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedContainerColor = Color.White.copy(
+                                    alpha = 0.4f
+                                ),
+                                unfocusedContainerColor = Color.White.copy(
+                                    alpha = 0.4f
+                                ),
+                                focusedBorderColor = Color.Transparent,
+                                unfocusedBorderColor = Color.Transparent,
+                                focusedTextColor = Color.White,
+                                unfocusedTextColor = Color.White,
+                                cursorColor = Color.White,
+                                focusedPlaceholderColor = Color.White,
+                                unfocusedPlaceholderColor = Color.White
+                            ),
+                            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+                            keyboardActions = KeyboardActions(
+                                onDone = { viewModel.fetchWeather(city) }
+                            )
                         )
+
+                        IconButton(
+                            onClick = { viewModel.fetchWeather(city) },
+                            modifier = Modifier
+                                .size(56.dp)
+                                .background(
+                                    color = Color.White.copy(alpha = 0.4f),
+                                    shape = CircleShape
+                                )
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = stringResource(R.string.weatherapp_search_content_description),
+                                tint = Color.White
+                            )
+                        }
                     }
                 }
                 AnimatedContent(

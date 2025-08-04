@@ -19,17 +19,17 @@ class WeatherAppViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<WeatherUiState>(WeatherUiState.Empty)
     val uiState: StateFlow<WeatherUiState> = _uiState
 
-    fun fetchWeather(city: String) {
-        viewModelScope.launch {
-            _uiState.value = WeatherUiState.Loading
-            try {
-                val response = repository.getWeatherByCity(city)
-                _uiState.value = WeatherUiState.Success(response)
-            } catch (e: Exception) {
-                _uiState.value = WeatherUiState.Error(ErrorType.CITY_NOT_FOUND)
-            }
-        }
-    }
+//    fun fetchWeather(city: String) {
+//        viewModelScope.launch {
+//            _uiState.value = WeatherUiState.Loading
+//            try {
+//                val response = repository.getWeatherByCity(city)
+//                _uiState.value = WeatherUiState.Success(response)
+//            } catch (e: Exception) {
+//                _uiState.value = WeatherUiState.Error(ErrorType.CITY_NOT_FOUND)
+//            }
+//        }
+//    }
 
     fun fetchWeatherByCoordinates(lat: Double, lon: Double) {
         viewModelScope.launch {

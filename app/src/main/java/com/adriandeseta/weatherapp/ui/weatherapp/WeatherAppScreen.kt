@@ -138,12 +138,12 @@ fun WeatherAppScreen(
                             ),
                             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
                             keyboardActions = KeyboardActions(
-                                onDone = { viewModel.fetchWeather(city) }
+                                onDone = { viewModel.fetchWeatherByCity(city) }
                             )
                         )
 
                         IconButton(
-                            onClick = { viewModel.fetchWeather(city) },
+                            onClick = { viewModel.fetchWeatherByCity(city) },
                             modifier = Modifier
                                 .size(56.dp)
                                 .background(
